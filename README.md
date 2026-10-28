@@ -16,7 +16,7 @@ Inside `index.html`:
 |---|---|
 | SEO + Open Graph tags, favicon | top of `<head>` |
 | Colours, fonts, spacing (design tokens) | `:root { … }` at the start of `<style>` |
-| Sections: Home, About, Skills, Projects, GitHub, Education & Goals, Contact, Footer | `<body>`, each marked with a `<!-- ===== NAME ===== -->` comment |
+| Sections: Home, About, Services, Skills, Projects, GitHub, Education & Goals, Contact, Footer | `<body>`, each marked with a `<!-- ===== NAME ===== -->` comment |
 | **Your links and details** | the `CONFIG` object at the start of `<script>` |
 
 ## Editing your details
@@ -38,15 +38,16 @@ projects: {
 featuredRepos: []   // optional list of repo names to pin in the GitHub section
 ```
 
-Anything left as `""` shows a yellow dashed **placeholder** instead of a fake link, so nothing on the page pretends to work.
+Anything left as `""` shows a neutral "coming soon" note instead of a broken link, so nothing on the page pretends to work.
 
 - **Name / text:** search for the text in `index.html` and edit it directly.
 - **Profile photo:** put a square image (e.g. 600×600 `profile.jpg`) next to `index.html`, then set `photo: "profile.jpg"`.
-- **ADEEG tech stack:** in the ADEEG project card, replace the `<li class="placeholder">…</li>` line with badges, e.g. `<li class="badge">Laravel</li>`.
-- **Project status:** change the `Concept` label in each card's `<span class="project-status">`.
+- **ADEEG tech stack:** in the ADEEG project card, replace `<li class="placeholder">Tech stack coming soon</li>` with tags, e.g. `<li class="tag">Laravel</li>`.
+- **Project status:** each card has `<span class="status">Concept</span>`; for a live project use `<span class="status live"><span class="pulse" aria-hidden="true"></span>Live</span>`.
 - **Favicon:** put `favicon.png` next to `index.html` and follow the comment above the `<link rel="icon">` line.
 - **Social preview:** after deploying, uncomment the `og:url` (and optionally `og:image`) lines in `<head>` and put in your real site URL.
-- **Colours:** change the variables in `:root`.
+- **Colours & fonts:** change the variables in `:root` at the top of `<style>` — `--gold` (main accent), `--copper` (second accent), `--bg` (background), `--display` / `--font` (fonts).
+- **Sections:** Home, About, Services ("How I can help"), Skills, Projects (KASMO is the large featured card), GitHub, Education & Goals, Contact. Each is marked with a `<!-- ===== NAME ===== -->` comment.
 
 ## Deploying to GitHub Pages
 
