@@ -316,6 +316,59 @@
     .gh-state { padding: 28px; text-align: center; color: var(--muted); grid-column: 1 / -1; }
     .skeleton { height: 160px; border-radius: var(--radius); background: linear-gradient(90deg, var(--surface) 0%, #24242C 50%, var(--surface) 100%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
     @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+    .repo-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .repo-tags span { font-size: 0.74rem; padding: 3px 9px; border-radius: 999px; color: var(--gold); background: rgba(242,196,103,0.08); border: 1px solid rgba(242,196,103,0.2); }
+
+    /* =========================================================
+       9b. LABS
+       ========================================================= */
+    .lab { padding: 36px; }
+    .lab-head { display: flex; gap: 18px; align-items: flex-start; }
+    .lab-head .icon-box { width: 54px; height: 54px; border-radius: 16px; }
+    .lab-head .icon-box svg { width: 25px; height: 25px; }
+    .lab h3 { font-size: 1.45rem; margin-top: 6px; }
+    .lab.featured h3 { font-size: 1.8rem; }
+    .lab-desc { color: var(--muted); margin-top: 16px; font-size: 0.98rem; max-width: 760px; }
+    .lab .features { grid-template-columns: repeat(3, 1fr); margin-top: 20px; }
+    .labs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    .labs-grid .lab { display: flex; flex-direction: column; }
+    .lab-grow { flex: 1; }
+    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 28px; }
+    .gallery.two { grid-template-columns: 1fr 1fr; margin-top: 22px; }
+    .shot {
+      position: relative; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; padding: 0; cursor: zoom-in;
+      background: #0D0D10; border: 1px solid var(--line); transition: border-color .25s ease, transform .25s ease;
+    }
+    .shot:hover { border-color: var(--line-2); transform: translateY(-3px); }
+    .shot img { width: 100%; height: 100%; object-fit: contain; padding: 10px 10px 30px; transition: transform .4s ease; }
+    .shot:hover img { transform: scale(1.04); }
+    .shot span {
+      position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 10px; text-align: left;
+      font-family: var(--font); font-size: 0.76rem; font-weight: 500; color: var(--text);
+      background: linear-gradient(180deg, transparent, rgba(10,10,12,0.95) 40%);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .lab-list { margin-top: 20px; }
+    .lab-list li { display: flex; gap: 14px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--line); font-size: 0.95rem; }
+    .lab-list li:first-child { border-top: 0; }
+    .lab-list .n { font-family: var(--mono); font-size: 0.76rem; color: var(--gold); min-width: 46px; }
+    .lab-list small { display: block; color: var(--muted); font-size: 0.85rem; }
+    .topology { margin-top: 22px; border-radius: 16px; border: 1px solid var(--line); background: #0D0D10; padding: 22px; display: grid; place-items: center; }
+    .topology svg { width: 100%; max-width: 340px; max-height: 180px; height: auto; display: block; }
+    .lab-meta { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 18px; font-size: 0.85rem; color: var(--muted); }
+    .lab-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .lab-meta svg { color: var(--gold); width: 16px; height: 16px; }
+    .lab .project-actions { margin-top: 24px; }
+
+    /* Image viewer */
+    .lightbox { width: min(1100px, 94vw); max-height: 92vh; padding: 0; border: 1px solid var(--line-2); border-radius: 20px; background: var(--bg-2); color: var(--text); overflow: hidden; }
+    .lightbox::backdrop { background: rgba(5,5,7,0.86); backdrop-filter: blur(6px); }
+    .lightbox img { width: 100%; max-height: 74vh; object-fit: contain; background: #0D0D10; display: block; }
+    .lb-bar { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--line); }
+    .lb-bar p { flex: 1; font-size: 0.92rem; color: var(--muted); }
+    .lb-bar p strong { color: var(--text); font-weight: 600; }
+    .lb-btn { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; cursor: pointer; background: var(--surface); border: 1px solid var(--line); color: var(--text); }
+    .lb-btn:hover { border-color: var(--line-2); color: var(--gold); }
 
     /* =========================================================
        10. EDUCATION & GOALS
@@ -399,6 +452,9 @@
       .hero-visual { order: -1; }
       .portrait { width: 290px; }
       .project.featured { grid-template-columns: 1fr; }
+      .labs-grid { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .lab .features { grid-template-columns: 1fr 1fr; }
       .project.featured .project-art { border-right: 0; border-bottom: 1px solid var(--line); min-height: 230px; }
     }
     @media (max-width: 860px) {
@@ -425,7 +481,10 @@
       .roles span::before, .roles span + span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
       .hero-facts li { border-right: 0; margin-right: 0; padding-right: 0; }
       .marquee { margin-top: 64px; }
-      .services-grid, .skills-grid, .repo-grid, .goal-list, .features { grid-template-columns: 1fr; }
+      .services-grid, .skills-grid, .repo-grid, .goal-list, .features, .lab .features { grid-template-columns: 1fr; }
+      .lab { padding: 26px; }
+      .lab-head { flex-direction: column; gap: 14px; }
+      .lb-bar p { font-size: 0.84rem; }
       .brand small { display: none; }
       .section-head { margin-bottom: 40px; }
       .glance, .edu-card, .goals, .skill-card, .project-body, .project.featured .project-body { padding: 26px; }
@@ -465,6 +524,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#labs">Labs</a></li>
           <li><a href="#education">Education</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -756,6 +816,130 @@
       </div>
     </section>
 
+    <!-- ===================== LABS =====================
+         Screenshots live in the labs/ folder. Each .shot button opens the image viewer;
+         data-full = image to show, data-caption = text under it. -->
+    <section id="labs" aria-labelledby="labs-title" style="background:linear-gradient(180deg,transparent,rgba(16,16,19,.75) 15%,rgba(16,16,19,.75) 85%,transparent)">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Hands-on labs</p>
+          <h2 class="section-title" id="labs-title">Cybersecurity &amp; <span class="grad-text">networking labs</span></h2>
+          <p class="section-lead">Practical exercises I've completed and documented on GitHub — from securing and recovering a Windows system to configuring routed networks in Cisco Packet Tracer.</p>
+        </div>
+
+        <!-- LAB 1: Cybersecurity Practical Labs -->
+        <article class="card lab featured reveal">
+          <div class="lab-head">
+            <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <div>
+              <p class="project-type">Windows security · Hands-on</p>
+              <h3>Cybersecurity Practical Labs</h3>
+            </div>
+          </div>
+          <p class="lab-desc">Applied security tasks on a real Windows machine: detecting malware with a safe test file, encrypting and decrypting data, verifying file integrity, controlling access and preparing for recovery.</p>
+          <ul class="features">
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Malware detection with Defender</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>File encryption (EFS &amp; cipher)</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Integrity checks with SHA-256</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>NTFS folder permissions</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>System Restore points</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Backup &amp; recovery</li>
+          </ul>
+          <div class="gallery">
+            <button class="shot" type="button" data-full="labs/defender-detection.png" data-caption="Microsoft Defender detecting the EICAR test file"><img src="labs/defender-detection.png" alt="Microsoft Defender threat alert for the EICAR test file" loading="lazy"><span>Malware detection</span></button>
+            <button class="shot" type="button" data-full="labs/efs-attributes.png" data-caption="Enabling EFS encryption from a file's Advanced Attributes"><img src="labs/efs-attributes.png" alt="Advanced Attributes dialog with 'Encrypt contents to secure data' selected" loading="lazy"><span>EFS encryption</span></button>
+            <button class="shot" type="button" data-full="labs/encryption-warning.png" data-caption="Choosing to encrypt a single file with EFS"><img src="labs/encryption-warning.png" alt="Windows encryption warning dialog" loading="lazy"><span>Encryption options</span></button>
+            <button class="shot" type="button" data-full="labs/cipher-command.png" data-caption="Encrypting and decrypting files with the cipher command"><img src="labs/cipher-command.png" alt="Command prompt output of cipher /d and cipher /a" loading="lazy"><span>cipher command</span></button>
+            <button class="shot" type="button" data-full="labs/sha256-hash.png" data-caption="Verifying file integrity with Get-FileHash (SHA-256)"><img src="labs/sha256-hash.png" alt="PowerShell Get-FileHash output with a SHA-256 hash" loading="lazy"><span>SHA-256 integrity</span></button>
+            <button class="shot" type="button" data-full="labs/ntfs-permissions.png" data-caption="Configuring NTFS permissions on a folder"><img src="labs/ntfs-permissions.png" alt="Folder permissions dialog with Deny entries" loading="lazy"><span>NTFS permissions</span></button>
+            <button class="shot" type="button" data-full="labs/system-restore.png" data-caption="Creating and reviewing a System Restore point"><img src="labs/system-restore.png" alt="System Restore window listing a manual restore point" loading="lazy"><span>System Restore</span></button>
+            <button class="shot" type="button" data-full="labs/windows-backup.png" data-caption="Backing up apps, settings and credentials with Windows Backup"><img src="labs/windows-backup.png" alt="Windows Backup showing apps, settings and credentials backed up" loading="lazy"><span>Windows Backup</span></button>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/abdiasis-hatreye/CYBERSECURITY-PRACTICAL-LABS" target="_blank" rel="noopener noreferrer" aria-label="Cybersecurity Practical Labs on GitHub (opens in a new tab)">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              View lab on GitHub
+            </a>
+          </div>
+        </article>
+
+        <div class="labs-grid">
+          <!-- LAB 2: Cybersecurity lab series -->
+          <article class="card lab reveal">
+            <div class="lab-head">
+              <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
+              <div>
+                <p class="project-type">Security fundamentals · Reports</p>
+                <h3>Cybersecurity Lab Series</h3>
+              </div>
+            </div>
+            <p class="lab-desc">A structured series of lab reports on core security concepts, operating-system security and network fundamentals.</p>
+            <ol class="lab-list lab-grow">
+              <li><span class="n">Lab 1</span><span>Asset inventory &amp; risk assessment<small>Assets, threats, risk levels and controls</small></span></li>
+              <li><span class="n">Lab 2</span><span>Cyber incident impact mapping<small>Stakeholders, affected services, containment</small></span></li>
+              <li><span class="n">Lab 3</span><span>CIA triad &amp; security controls<small>Preventive, detective and corrective controls</small></span></li>
+              <li><span class="n">Lab 5</span><span>Windows/Linux security baseline<small>Accounts, services, logs and hardening</small></span></li>
+              <li><span class="n">Lab 6</span><span>Small network in Packet Tracer<small>Topology, IP addressing and segmentation</small></span></li>
+              <li><span class="n">Lab 7</span><span>IP configuration &amp; connectivity<small>IPv4, gateway, DNS and ping testing</small></span></li>
+            </ol>
+            <div class="gallery two">
+              <button class="shot" type="button" data-full="labs/packet-tracer-ipconfig.jpg" data-caption="Checking a PC's IP address and default gateway with ipconfig in Packet Tracer"><img src="labs/packet-tracer-ipconfig.jpg" alt="Packet Tracer command prompt showing ipconfig output" loading="lazy"><span>ipconfig in Packet Tracer</span></button>
+              <button class="shot" type="button" data-full="labs/tasklist-processes.jpg" data-caption="Reviewing running processes with tasklist"><img src="labs/tasklist-processes.jpg" alt="Command prompt listing running processes with tasklist" loading="lazy"><span>Process review</span></button>
+            </div>
+            <div class="project-actions">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/abdiasis-hatreye/CYPER-LABS" target="_blank" rel="noopener noreferrer" aria-label="Cybersecurity lab reports on GitHub (opens in a new tab)">Lab reports
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/abdiasis-hatreye/CYPER-PICTURE" target="_blank" rel="noopener noreferrer" aria-label="Lab screenshots on GitHub (opens in a new tab)">Screenshots
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+          </article>
+
+          <!-- LAB 3: CCNA Packet Tracer labs -->
+          <article class="card lab reveal">
+            <div class="lab-head">
+              <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2h12v2"/></svg></span>
+              <div>
+                <p class="project-type">Cisco Packet Tracer</p>
+                <h3>CCNA Routing &amp; Security Labs</h3>
+              </div>
+            </div>
+            <p class="lab-desc">Network simulations built in Cisco Packet Tracer, practising routing protocols, address translation, traffic filtering and gateway redundancy.</p>
+            <div class="topology lab-grow" aria-hidden="true">
+              <svg viewBox="0 0 320 150" fill="none" stroke-linecap="round">
+                <g stroke="rgba(242,196,103,0.45)" stroke-width="1.5">
+                  <path d="M160 34 L70 78 M160 34 L250 78 M70 78 L250 78 M70 78 L40 126 M70 78 L100 126 M250 78 L220 126 M250 78 L280 126" />
+                </g>
+                <g fill="#16161B" stroke="#F2C467" stroke-width="1.6">
+                  <circle cx="160" cy="30" r="16"/><circle cx="70" cy="78" r="16"/><circle cx="250" cy="78" r="16"/>
+                </g>
+                <g stroke="#F2C467" stroke-width="1.4"><path d="M152 30h16M160 22v16M62 78h16M70 70v16M242 78h16M250 70v16"/></g>
+                <g fill="#16161B" stroke="#E9875A" stroke-width="1.4">
+                  <rect x="28" y="118" width="24" height="16" rx="3"/><rect x="88" y="118" width="24" height="16" rx="3"/>
+                  <rect x="208" y="118" width="24" height="16" rx="3"/><rect x="268" y="118" width="24" height="16" rx="3"/>
+                </g>
+                <g fill="#ADA597" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle" stroke="none">
+                  <text x="160" y="8">R1</text><text x="70" y="106">R2</text><text x="250" y="106">R3</text>
+                </g>
+              </svg>
+            </div>
+            <ul class="tags" style="margin-top:20px" aria-label="Lab topics">
+              <li class="tag">Static routing</li><li class="tag">RIP</li><li class="tag">Dynamic routing</li><li class="tag">EIGRP</li>
+              <li class="tag">NAT</li><li class="tag">Extended ACLs</li><li class="tag">FHRP</li><li class="tag">Network scenario</li>
+            </ul>
+            <div class="lab-meta">
+              <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5"/></svg>9 Packet Tracer (.pkt) files</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/abdiasis-hatreye/CCNA-" target="_blank" rel="noopener noreferrer" aria-label="CCNA Packet Tracer labs on GitHub (opens in a new tab)">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+                View labs on GitHub
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== GITHUB ===================== -->
     <section id="github" aria-labelledby="github-title" style="padding-top:0">
       <div class="container">
@@ -845,6 +1029,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
+          <li><a href="#labs">Labs</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -857,6 +1042,17 @@
       </div>
     </div>
   </footer>
+
+  <!-- Image viewer for lab screenshots -->
+  <dialog class="lightbox" id="lightbox" aria-label="Lab screenshot viewer">
+    <img id="lbImg" src="data:," alt="">
+    <div class="lb-bar">
+      <button class="lb-btn" id="lbPrev" type="button" aria-label="Previous screenshot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button class="lb-btn" id="lbNext" type="button" aria-label="Next screenshot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <p id="lbCaption" aria-live="polite"></p>
+      <button class="lb-btn" id="lbClose" type="button" aria-label="Close viewer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+  </dialog>
 
   <button class="to-top" id="toTop" type="button" aria-label="Back to top">
     <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
@@ -883,6 +1079,13 @@
         adeeg:     { repo: "", demo: "" }                               // ADEEG App
       },
 
+      // Descriptions + topic tags shown for repos that have no description on GitHub
+      repoNotes: {
+        "CYBERSECURITY-PRACTICAL-LABS": { text: "Hands-on Windows security labs: malware detection, EFS encryption, SHA-256 integrity checks, NTFS permissions and backup.", tags: ["Security", "Windows"] },
+        "CYPER-LABS": { text: "Cybersecurity lab reports — risk assessment, incident impact, CIA triad, OS hardening and network basics.", tags: ["Security", "Reports"] },
+        "CYPER-PICTURE": { text: "Screenshots from networking and system labs: IP configuration, running processes and Packet Tracer.", tags: ["Networking", "Screenshots"] },
+        "CCNA-": { text: "Cisco Packet Tracer labs: static routing, RIP, EIGRP, NAT, extended ACLs and FHRP.", tags: ["CCNA", "Packet Tracer"] }
+      },
       repoCount: 6,            // how many repositories to show in the GitHub section
       featuredRepos: []        // OPTIONAL: pin repos by name, e.g. ["CYBERSECURITY-PRACTICAL-LABS"]
     };
@@ -942,7 +1145,7 @@
       if (CONFIG.cvFile) { const cv = $("#cvBtn"); cv.href = CONFIG.cvFile; cv.hidden = false; }
 
       /* ---------- Project buttons ---------- */
-      $$(".project-actions").forEach(box => {
+      $$(".project-actions[data-project]").forEach(box => {
         const p = CONFIG.projects[box.dataset.project] || {};
         const name = box.dataset.name;
         if (isHttpUrl(p.demo)) {
@@ -1031,7 +1234,7 @@
           .then(data => {
             if (!Array.isArray(data)) throw new Error("shape");
             const siteRepo = (CONFIG.githubUsername + ".github.io").toLowerCase();
-            let repos = data.filter(r => !r.fork && !r.archived && String(r.name).toLowerCase() !== siteRepo);
+            let repos = data.filter(r => !r.fork && !r.archived && r.size > 0 && String(r.name).toLowerCase() !== siteRepo);
             if (CONFIG.featuredRepos.length) {
               const wanted = CONFIG.featuredRepos.map(n => n.toLowerCase());
               repos = repos.filter(r => wanted.includes(String(r.name).toLowerCase()))
@@ -1044,10 +1247,12 @@
             repos.forEach(r => {
               const url = isHttpUrl(r.html_url) ? r.html_url : ghUrl;
               const name = String(r.name);
+              const note = (CONFIG.repoNotes || {})[name] || {};
               grid.appendChild(el("article", { class: "card lift repo" }, [
                 el("div", { class: "repo-top" }, [el("span", { html: ICONS.folder }), el("span", { html: ICONS.external })]),
                 el("h4", {}, [el("a", external({ href: url, text: name, "aria-label": name + " repository (opens in a new tab)" }))]),
-                el("p", { text: r.description || "A public repository on my GitHub profile." }),
+                el("p", { text: r.description || note.text || "A public repository on my GitHub profile." }),
+                note.tags ? el("div", { class: "repo-tags" }, note.tags.map(t => el("span", { text: t }))) : null,
                 r.language ? el("span", { class: "repo-lang" }, [el("i", { "aria-hidden": "true" }), String(r.language)]) : null
               ]));
             });
@@ -1058,6 +1263,41 @@
               ? "GitHub's request limit has been reached for now. You can still browse my repositories directly."
               : "Repositories couldn't be loaded right now. You can still browse them directly on GitHub.");
           });
+      })();
+
+      /* ---------- Lab screenshot viewer ---------- */
+      (function lightbox() {
+        const dlg = $("#lightbox"), img = $("#lbImg"), cap = $("#lbCaption");
+        const shots = $$(".shot");
+        if (!dlg || !shots.length) return;
+        let index = 0, opener = null;
+        function show(i) {
+          index = (i + shots.length) % shots.length;
+          const b = shots[index];
+          img.src = b.dataset.full;
+          img.alt = b.querySelector("img").alt;
+          cap.textContent = "";
+          cap.appendChild(el("strong", { text: (index + 1) + " / " + shots.length + "  " }));
+          cap.appendChild(document.createTextNode(b.dataset.caption || ""));
+        }
+        function open(i, from) {
+          opener = from; show(i);
+          if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+          $("#lbClose").focus();
+        }
+        function close() {
+          if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open");
+        }
+        shots.forEach((b, i) => b.addEventListener("click", () => open(i, b)));
+        $("#lbPrev").addEventListener("click", () => show(index - 1));
+        $("#lbNext").addEventListener("click", () => show(index + 1));
+        $("#lbClose").addEventListener("click", close);
+        dlg.addEventListener("click", e => { if (e.target === dlg) close(); });   // click outside the image
+        dlg.addEventListener("keydown", e => {
+          if (e.key === "ArrowLeft") show(index - 1);
+          if (e.key === "ArrowRight") show(index + 1);
+        });
+        dlg.addEventListener("close", () => { if (opener) opener.focus(); });
       })();
 
       /* ---------- Navigation ---------- */
@@ -1085,7 +1325,7 @@
       });
 
       // Highlight the menu item for the section in view
-      const parentOf = { services: "about", github: "projects" };
+      const parentOf = { services: "about", github: "labs" };
       if ("IntersectionObserver" in window) {
         const spy = new IntersectionObserver(entries => {
           entries.forEach(entry => {
