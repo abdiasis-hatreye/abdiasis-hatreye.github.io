@@ -306,6 +306,7 @@
       font-family: var(--mono); font-size: 0.72rem; padding: 4px 10px; border-radius: 999px;
       background: rgba(10,10,12,0.75); border: 1px solid var(--line); color: var(--muted);
     }
+    .project-status.is-live { color: var(--green); border-color: rgba(240,138,93,0.45); }
     .project-body { padding: 24px 26px 26px; display: flex; flex-direction: column; flex: 1; }
     .project-body h3 { font-size: 1.25rem; font-weight: 700; }
     .project-body p { color: var(--muted); margin-top: 10px; font-size: 0.97rem; flex: 1; }
@@ -664,7 +665,7 @@
           <!-- PROJECT 1 — repository/demo links are set in CONFIG.projects.kasmo -->
           <article class="card hoverable project reveal" data-theme="blue">
             <div class="project-top">
-              <span class="project-status">Concept</span>
+              <span class="project-status is-live">● Live</span>
               <span class="project-emblem" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18h2M10 7l2 2 2-2"/></svg></span>
             </div>
             <div class="project-body">
@@ -812,14 +813,14 @@
     const CONFIG = {
       githubUsername: "abdiasis-hatreye",   // enables GitHub links + repo list
       linkedinUrl: "https://www.linkedin.com/in/abdiasis-suleiman-26b8b1440",
-      email: "",               // e.g. "you@example.com"
+      email: "cabdicasiissalebaan17@gmail.com",
       whatsappNumber: "",      // OPTIONAL, international format digits only, e.g. "252xxxxxxxxx"
       photo: "profile.jpg",    // your photo file next to index.html ("" shows AH initials)
       cvFile: "",              // OPTIONAL, e.g. "Abdiasis-Hatreye-CV.pdf"
 
       // Project links. Leave demo "" unless a real live demo exists.
       projects: {
-        kasmo:     { repo: "", demo: "" },   // KASMO SYSTEM
+        kasmo:     { repo: "", demo: "https://kasmo.nespos.cloud/" },   // KASMO SYSTEM
         hatreyeai: { repo: "", demo: "" },   // HATREYE.AI
         adeeg:     { repo: "", demo: "" }    // ADEEG App
       },
@@ -902,7 +903,7 @@
         }
         if (p.demo && isHttpUrl(p.demo)) {
           box.appendChild(el("a", { class: "btn btn-primary btn-sm", href: p.demo, target: "_blank", rel: "noopener noreferrer",
-            "aria-label": name + " live demo (opens in a new tab)", html: ICONS.external + " Live demo" }));
+            "aria-label": name + " live site (opens in a new tab)", html: ICONS.external + " Visit live site" }));
         }
       });
 
