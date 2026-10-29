@@ -382,6 +382,13 @@
     .edu-card .degree { color: var(--gold); font-weight: 600; margin-top: 6px; }
     .edu-card p.desc { color: var(--muted); margin-top: 16px; font-size: 0.97rem; flex: 1; }
     .edu-card .tags { margin-top: 24px; }
+    .cert-card { margin-top: 24px; padding: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 32px; align-items: center; }
+    .cert-shot { aspect-ratio: 1.42 / 1; }
+    .cert-shot img { padding: 8px 8px 34px; }
+    .cert-body h3 { font-size: 1.35rem; margin-top: 6px; }
+    .cert-body .degree { color: var(--gold); font-weight: 600; margin-top: 6px; }
+    .cert-body .desc { color: var(--muted); margin-top: 14px; font-size: 0.97rem; }
+    .cert-body .tags { margin-top: 20px; }
     .goals { padding: 36px; }
     .goals h3 { font-size: 1.25rem; }
     .goals > p { color: var(--muted); margin-top: 8px; font-size: 0.95rem; }
@@ -447,7 +454,7 @@
       .nav-cta { display: none; }
     }
     @media (max-width: 960px) {
-      .hero-grid, .about-grid, .edu-grid { grid-template-columns: 1fr; }
+      .hero-grid, .about-grid, .edu-grid, .cert-card { grid-template-columns: 1fr; }
       .hero-grid { gap: 56px; }
       .hero-visual { order: -1; }
       .portrait { width: 290px; }
@@ -992,6 +999,22 @@
             </ol>
           </article>
         </div>
+
+        <!-- CERTIFICATES: images live in the certificates/ folder and open in the image viewer -->
+        <article class="card cert-card reveal" aria-labelledby="cert-title">
+          <button class="shot cert-shot" type="button" data-full="certificates/isoc-network-fundamentals.png" data-caption="Internet Society — Fundamentals of Designing and Deploying Computer Networks"><img src="certificates/isoc-network-fundamentals.png" alt="Internet Society Learning certificate of completion for Fundamentals of Designing and Deploying Computer Networks" loading="lazy"><span>View certificate</span></button>
+          <div class="cert-body">
+            <p class="project-type">Certificate of completion</p>
+            <h3 id="cert-title">Fundamentals of Designing and Deploying Computer Networks</h3>
+            <p class="degree">Internet Society Learning</p>
+            <p class="desc">Completed the full learning plan on how computer networks are designed, built and deployed — from network planning and addressing to putting a working network into service.</p>
+            <ul class="tags">
+              <li class="tag">Networking</li>
+              <li class="tag">Network design</li>
+              <li class="tag">Issued July 2, 2026</li>
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1044,7 +1067,7 @@
   </footer>
 
   <!-- Image viewer for lab screenshots -->
-  <dialog class="lightbox" id="lightbox" aria-label="Lab screenshot viewer">
+  <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
     <img id="lbImg" src="data:," alt="">
     <div class="lb-bar">
       <button class="lb-btn" id="lbPrev" type="button" aria-label="Previous screenshot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
