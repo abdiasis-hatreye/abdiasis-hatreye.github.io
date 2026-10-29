@@ -158,7 +158,7 @@
     .nav { position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--nav-h); transition: background .3s ease, border-color .3s ease; border-bottom: 1px solid transparent; }
     .nav.scrolled { background: rgba(10,10,12,0.78); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); border-color: var(--line); }
     .nav .container { height: 100%; display: flex; align-items: center; gap: 20px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text); font-family: var(--display); font-weight: 700; margin-right: auto; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text); font-family: var(--display); font-weight: 700; margin-right: auto; white-space: nowrap; }
     .brand-mark { width: 40px; height: 40px; border-radius: 12px; object-fit: cover; object-position: center top; border: 1.5px solid rgba(242,196,103,0.7); box-shadow: 0 0 0 3px rgba(242,196,103,0.12); background: var(--surface); }
     .brand small { display: block; font-family: var(--font); font-weight: 500; font-size: 0.74rem; color: var(--muted); letter-spacing: 0.02em; line-height: 1.2; }
     .brand span { line-height: 1.2; }
@@ -382,7 +382,7 @@
     .edu-card .degree { color: var(--gold); font-weight: 600; margin-top: 6px; }
     .edu-card p.desc { color: var(--muted); margin-top: 16px; font-size: 0.97rem; flex: 1; }
     .edu-card .tags { margin-top: 24px; }
-    .cert-card { margin-top: 24px; padding: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 32px; align-items: center; }
+    .cert-card { padding: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 32px; align-items: center; }
     .cert-shot { aspect-ratio: 1.42 / 1; }
     .cert-shot img { padding: 8px 8px 34px; }
     .cert-body h3 { font-size: 1.35rem; margin-top: 6px; }
@@ -452,6 +452,7 @@
       .skill-card.full { grid-column: 1 / -1; }
       .repo-grid { grid-template-columns: repeat(2, 1fr); }
       .nav-cta { display: none; }
+      .nav-links a { padding: 8px 12px; }
     }
     @media (max-width: 960px) {
       .hero-grid, .about-grid, .edu-grid, .cert-card { grid-template-columns: 1fr; }
@@ -465,6 +466,9 @@
       .project.featured .project-art { border-right: 0; border-bottom: 1px solid var(--line); min-height: 230px; }
     }
     @media (max-width: 860px) {
+      .projects { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 960px) {
       .menu-btn { display: inline-flex; order: 3; }
       .nav { background: rgba(10,10,12,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
       .nav-links {
@@ -474,7 +478,6 @@
       }
       .nav-links.open { display: flex; }
       .nav-links a { padding: 14px 18px; font-size: 1rem; border-radius: 14px; }
-      .projects { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .container { padding: 0 18px; }
@@ -533,6 +536,7 @@
           <li><a href="#projects">Projects</a></li>
           <li><a href="#labs">Labs</a></li>
           <li><a href="#education">Education</a></li>
+          <li><a href="#certificates">Certificates</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -999,8 +1003,19 @@
             </ol>
           </article>
         </div>
+      </div>
+    </section>
 
-        <!-- CERTIFICATES: images live in the certificates/ folder and open in the image viewer -->
+    <!-- ===================== CERTIFICATES =====================
+         Certificate images live in the certificates/ folder and open in the image viewer. -->
+    <section id="certificates" aria-labelledby="certificates-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Certificates</p>
+          <h2 class="section-title" id="certificates-title">Verified <span class="grad-text">learning</span></h2>
+          <p class="section-lead">Courses I've completed alongside my degree to deepen my networking and IT knowledge.</p>
+        </div>
+
         <article class="card cert-card reveal" aria-labelledby="cert-title">
           <button class="shot cert-shot" type="button" data-full="certificates/isoc-network-fundamentals.png" data-caption="Internet Society — Fundamentals of Designing and Deploying Computer Networks"><img src="certificates/isoc-network-fundamentals.png" alt="Internet Society Learning certificate of completion for Fundamentals of Designing and Deploying Computer Networks" loading="lazy"><span>View certificate</span></button>
           <div class="cert-body">
@@ -1054,6 +1069,7 @@
             <li><a href="#projects">Projects</a></li>
           <li><a href="#labs">Labs</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#certificates">Certificates</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
