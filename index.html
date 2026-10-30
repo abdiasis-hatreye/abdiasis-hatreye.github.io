@@ -296,6 +296,7 @@
     .features svg { color: var(--gold); width: 16px; height: 16px; }
     .project-body .tags { margin-top: 22px; }
     .project-actions { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .project.is-linked { cursor: pointer; }
 
     /* =========================================================
        9. GITHUB
@@ -1195,6 +1196,12 @@
         if (isHttpUrl(p.demo)) {
           box.appendChild(el("a", external({ class: "btn btn-primary btn-sm", href: p.demo,
             "aria-label": "Visit the " + name + " live site (opens in a new tab)", html: "Visit live site " + ICONS.external })));
+          // Tapping anywhere on a live project's card opens the app
+          const card = box.closest(".project");
+          card.classList.add("is-linked");
+          card.addEventListener("click", e => {
+            if (!e.target.closest("a, button")) window.open(p.demo, "_blank", "noopener");
+          });
         }
         if (isHttpUrl(p.repo)) {
           box.appendChild(el("a", external({ class: "btn btn-ghost btn-sm", href: p.repo,
