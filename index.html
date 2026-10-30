@@ -807,18 +807,22 @@
             </div>
           </article>
 
-          <!-- PROJECT 3 — replace the placeholder below with ADEEG's real technologies, e.g. <li class="tag">Laravel</li> -->
+          <!-- PROJECT 3 — links come from CONFIG.projects.adeeg -->
           <article class="card lift project reveal">
             <div class="project-art art-c">
-              <span class="status">Concept</span>
+              <span class="status live"><span class="pulse" aria-hidden="true"></span>Live</span>
               <span class="project-emblem" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16l-1.5 9.5a2 2 0 0 1-2 1.5h-9a2 2 0 0 1-2-1.5L4 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2M9 12h6"/></svg></span>
             </div>
             <div class="project-body">
-              <p class="project-type">Shop management app</p>
+              <p class="project-type">Voice-powered POS system</p>
               <h3>ADEEG App</h3>
-              <p>A shop management app for products, inventory, daily sales, customer debts, payments and accounting — exploring Somali voice-based sales entry.</p>
+              <p>A shop point-of-sale system where sales are entered by speaking Somali — product, quantity and price — alongside inventory, customer debts, payments and reports.</p>
+              <ul class="features">
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Somali voice sales entry</li>
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Inventory &amp; debts</li>
+              </ul>
               <ul class="tags" aria-label="Technologies">
-                <li class="placeholder">Tech stack coming soon</li>
+                <li class="tag">Laravel</li><li class="tag">PHP</li><li class="tag">PostgreSQL</li><li class="tag">Alpine.js</li><li class="tag">Whisper AI</li>
               </ul>
               <div class="project-actions" data-project="adeeg" data-name="ADEEG App"></div>
             </div>
@@ -1115,7 +1119,7 @@
       projects: {
         kasmo:     { repo: "", demo: "https://kasmo.nespos.cloud/" },   // KASMO SYSTEM
         hatreyeai: { repo: "", demo: "" },                              // HATREYE.AI
-        adeeg:     { repo: "", demo: "" }                               // ADEEG App
+        adeeg:     { repo: "", demo: "https://adeeg.onrender.com/" }                             // ADEEG App
       },
 
       // Descriptions + topic tags shown for repos that have no description on GitHub
